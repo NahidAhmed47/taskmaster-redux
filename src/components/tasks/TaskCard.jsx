@@ -1,4 +1,6 @@
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { useDispatch } from 'react-redux';
+import { updateTask } from '../../redux/features/tasks/tasksSlice';
 
 const TaskCard = ({task}) => {
   // const task = {
@@ -11,7 +13,7 @@ const TaskCard = ({task}) => {
   //   assignedTo: 'Mir Hussain',
   //   priority: 'high',
   // };
-
+  const dispatch = useDispatch();
   return (
     <div className="bg-secondary/10 rounded-md p-5">
       <h1
@@ -32,6 +34,7 @@ const TaskCard = ({task}) => {
             <TrashIcon className="h-5 w-5 text-red-500" />
           </button>
           <button
+            onClick={() => dispatch(updateTask(task.id))}
             title="In progress"
           >
             <ArrowRightIcon className="h-5 w-5 text-primary" />
